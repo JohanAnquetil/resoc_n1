@@ -2,22 +2,22 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>ReSoC - Administration</title> 
+        <title>ReSoC - Administration</title>
         <meta name="author" content="Julien Falconnet">
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-    <?php include("header.php");?>
+
+        <?php include('header.php'); ?>
 
         <?php
         /**
          * Etape 1: Ouvrir une connexion avec la base de donnée.
          */
         // on va en avoir besoin pour la suite
-        $mysqli = new mysqli("localhost", "root", "csess", "socialnetwork");
+        $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
         //verification
-        if ($mysqli->connect_errno)
-        {
+        if ($mysqli->connect_errno) {
             echo("Échec de la connexion : " . $mysqli->connect_error);
             exit();
         }
@@ -50,7 +50,7 @@
                         <h3>#chaussette</h3>
                         <p>id:321</p>
                         <nav>
-                            <a href="tags.php?tag_id=321">Messages :</a>
+                            <a href="tags.php?tag_id=321">Messages</a>
                         </nav>
                     </article>
                 <?php } ?>
