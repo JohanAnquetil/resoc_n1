@@ -67,7 +67,7 @@
                         <h3>#chaussette</h3>
                         <p>id:321</p>
                         <nav>
-                            <a href="tags.php?tag_id=321">Messages</a>
+                            <a href="tags.php?tag_id=321">Messages :</a>
                         </nav>
                     </article>
                 <?php } ?>
