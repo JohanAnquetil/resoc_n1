@@ -31,7 +31,7 @@
          * Etape 1: Ouvrir une connexion avec la base de donnée.
          */
         // on va en avoir besoin pour la suite
-        $mysqli = new mysqli("localhost", "root", "csess", "socialnetwork");
+        $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
         //verification
         if ($mysqli->connect_errno)
         {
@@ -67,7 +67,7 @@
                         <h3>#chaussette</h3>
                         <p>id:321</p>
                         <nav>
-                            <a href="tags.php?tag_id=321">Messages :</a>
+                            <a href="tags.php?tag_id=321">Messages</a>
                         </nav>
                     </article>
                 <?php } ?>
