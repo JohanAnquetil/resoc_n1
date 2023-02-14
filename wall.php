@@ -77,6 +77,9 @@
 
                 while ($post = $lesInformations->fetch_assoc()) {
                 // echo "<pre>" . print_r($post, 1) . "</pre>";
+                $taglist = $post['taglist'];
+                $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
+
                 ?>
 
                     <article>
@@ -89,7 +92,11 @@
                         </div>
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
-                            <a href="tags.php?taglist=<?php echo $post['taglist'] ?>">#<?php echo $post['taglist'] ?></a>
+                            <?php
+                                foreach ($tags as $tag) {
+                                    echo '<a href="tags.php?taglist=' . $tag . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                }
+                            ?>
                         </footer>
                     </article>
 

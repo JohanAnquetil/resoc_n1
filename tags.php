@@ -33,7 +33,7 @@
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 $tag = $lesInformations->fetch_assoc();
                 //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par le label et effacer la ligne ci-dessous
-                echo "<pre>" . print_r($tag, 1) . "</pre>";
+                // echo "<pre>" . print_r($tag, 1) . "</pre>";
                 ?>
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
@@ -71,8 +71,11 @@
 
                 //Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
                 while ($post = $lesInformations->fetch_assoc()) {
+                    $taglist = $post['taglist'];
+                    $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
 
-                    echo "<pre>" . print_r($post, 1) . "</pre>";
+                    // echo "<pre>" . print_r($post, 1) . "</pre>";
+
                     ?>
                     <article>
                         <h3>
@@ -80,16 +83,15 @@
                         </h3>
                         <address><?php echo $post['author_name'] ?></address>
                         <div>
-                            <p>Ceci est un paragraphe</p>
-                            <p>Ceci est un autre paragraphe</p>
-                            <p>... de toutes manières il faut supprimer cet
-                                article et le remplacer par des informations en
-                                provenance de la base de donnée</p>
+                            <p><?php echo $post['content'] ?></p>
                         </div>
                         <footer>
-                            <small>♥ 132</small>
-                            <a href="">#lorem</a>,
-                            <a href="">#piscitur</a>,
+                            <small>♥ <?php echo $post['like_number'] ?></small>
+                            <?php
+                                foreach ($tags as $tag) {
+                                    echo '<a href="tags.php?taglist=' . $tag . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                }
+                            ?>
                         </footer>
                     </article>
                 <?php } ?>

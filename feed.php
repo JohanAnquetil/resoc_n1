@@ -87,6 +87,9 @@
                  * A vous de retrouver comment faire la boucle while de parcours...
                  */
                 while ($post = $lesInformations->fetch_assoc()) {
+                    $taglist = $post['taglist'];
+                    $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
+    
                 ?>
 
                 <article>
@@ -102,7 +105,11 @@
                     </div>
                     <footer>
                         <small>♥ <?php echo $post['like_number']?></small>
-                        <a href=""><?php echo $post['taglist']?></a>
+                        <?php
+                                foreach ($tags as $tag) {
+                                    echo '<a href="tags.php?taglist=' . $tag . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                }
+                            ?>
                     </footer>
                 </article>
                 <?php } ?>
