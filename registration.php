@@ -63,21 +63,21 @@
                         if (! $ok) {
                             echo "L'inscription a échouée : " . $mysqli->error;
                         } else {
-                            echo "Votre inscription est un succès : " . $new_alias;
+                            echo "Votre inscription est un succès " . $new_alias;
                             echo "<a href='login.php'>Connectez-vous.</a>";
                         }
                     }
                     ?>
 
                     <form action="registration.php" method="post">
-                        <input type='hidden'name='???' value='achanger'>
+                        <input type='hidden' name='???' value='achanger'>
                         <dl>
                             <dt><label for='pseudo'>Pseudo</label></dt>
-                            <dd><input type='text'name='pseudo'></dd>
+                            <dd><input type='text' name='pseudo'></dd>
                             <dt><label for='email'>E-Mail</label></dt>
-                            <dd><input type='email'name='email'></dd>
+                            <dd><input type='email' name='email'></dd>
                             <dt><label for='motpasse'>Mot de passe</label></dt>
-                            <dd><input type='password'name='motpasse'></dd>
+                            <dd><input type='password' name='motpasse'></dd>
                         </dl>
                         <input type='submit'>
                     </form>
