@@ -74,6 +74,9 @@
                 // Etape 3: Parcourir ces données et les ranger bien comme il faut dans du html
                 // NB: à chaque tour du while, la variable post ci dessous reçois les informations du post suivant.
                 while ($post = $lesInformations->fetch_assoc()) {
+                    $taglist = $post['taglist'];
+                    $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
+    
                     //la ligne ci-dessous doit etre supprimée mais regardez ce
                     //qu'elle affiche avant pour comprendre comment sont organisées les information dans votre
                    /* echo "<pre>" . print_r($post, 1) . "</pre>";*/
@@ -94,7 +97,11 @@
                         </div>
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
-                            <a href=""><?php echo $post['taglist'] ?></a>,
+                            <?php
+                                foreach ($tags as $tag) {
+                                    echo '<a href="tags.php?taglist=' . $tag . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                }
+                            ?>
                         </footer>
                     </article>
                     <?php
