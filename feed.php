@@ -43,7 +43,7 @@
 
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez tous les message des utilisatrices
-                    auxquel est abonnée l'utilisatrice <?php echo $user['alias'] ?>
+                    auxquelles est abonnée l'utilisatrice <?php echo $user['alias'] ?>
                     
                     </p>
 
@@ -64,7 +64,8 @@
                     posts.created,
                     users.alias as author_name,
                     count(likes.id) as like_number,
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist
+                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id) AS tag_id
                     FROM followers
                     JOIN users ON users.id=followers.followed_user_id
                     JOIN posts ON posts.user_id=users.id
@@ -78,7 +79,7 @@
 
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 if (! $lesInformations) {
-                    echo("Échec de la requete : " . $mysqli->error);
+                    echo "Échec de la requete : " . $mysqli->error;
                 }
 
                 /**
@@ -88,6 +89,9 @@
                 while ($post = $lesInformations->fetch_assoc()) {
                     $taglist = $post['taglist'];
                     $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
+                    $tagIdList = $post['tag_id'];
+                    $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
+                    $tagIdReverse = array_reverse($tagId)
     
                 ?>
 
@@ -105,8 +109,8 @@
                     <footer>
                         <small>♥ <?php echo $post['like_number']?></small>
                         <?php
-                                foreach ($tags as $tag) {
-                                    echo '<a href="tags.php?taglist=' . $tag . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                foreach ($tags as $key => $tag) {
+                                    echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
                                 }
                             ?>
                     </footer>

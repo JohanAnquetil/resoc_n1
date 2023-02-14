@@ -53,7 +53,8 @@
                     posts.created,
                     users.alias as author_name,
                     count(likes.id) as like_number,
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist
+                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id) AS tag_id
                     FROM posts_tags as filter
                     JOIN posts ON posts.id=filter.post_id
                     JOIN users ON users.id=posts.user_id
@@ -73,7 +74,10 @@
                 while ($post = $lesInformations->fetch_assoc()) {
                     $taglist = $post['taglist'];
                     $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
-
+                    $tagIdList = $post['tag_id'];
+                    $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
+                    $tagIdReverse = array_reverse($tagId)
+    
                     // echo "<pre>" . print_r($post, 1) . "</pre>";
 
                     ?>
@@ -88,8 +92,8 @@
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
                             <?php
-                                foreach ($tags as $tag) {
-                                    echo '<a href="tags.php?taglist=' . $tag . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                foreach ($tags as $key => $tag) {
+                                    echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
                                 }
                             ?>
                         </footer>

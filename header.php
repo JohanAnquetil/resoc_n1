@@ -8,7 +8,7 @@
         <a href="news.php">Actualités</a>
         <a href="wall.php?user_id=5">Mur</a>
         <a href="feed.php?user_id=5">Flux</a>
-        <a href="tags.php?tag_id=1">Mots-clés</a>
+        <a href="tags.php?tag_id=9">Mots-clés</a>
     </nav>
 
     <nav id="user">

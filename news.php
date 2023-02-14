@@ -17,7 +17,7 @@
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez les derniers messages de
-                        tous les utilisatrices du site.</p>
+                        toutes les utilisatrices du site.</p>
                 </section>
             </aside>
 
@@ -52,7 +52,8 @@
                     posts.created,
                     users.alias as author_name,
                     count(likes.id) as like_number,
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist
+                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id) AS tag_id
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id
@@ -76,6 +77,9 @@
                 while ($post = $lesInformations->fetch_assoc()) {
                     $taglist = $post['taglist'];
                     $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
+                    $tagIdList = $post['tag_id'];
+                    $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
+                    $tagIdReverse = array_reverse($tagId)    
     
                     //la ligne ci-dessous doit etre supprimée mais regardez ce
                     //qu'elle affiche avant pour comprendre comment sont organisées les information dans votre
@@ -98,8 +102,8 @@
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
                             <?php
-                                foreach ($tags as $tag) {
-                                    echo '<a href="tags.php?taglist=' . $tag . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                foreach ($tags as $key => $tag) {
+                                    echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
                                 }
                             ?>
                         </footer>

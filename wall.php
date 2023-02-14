@@ -57,8 +57,13 @@
 
                 //Etape 3: récupérer tous les messages de l'utilisatrice
                 $laQuestionEnSql = "
-                    SELECT posts.content, posts.created, users.alias as author_name,
-                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist
+                    SELECT
+                        posts.content,
+                        posts.created,
+                        users.alias as author_name,
+                    COUNT(likes.id) as like_number,
+                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id) AS tag_id
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id
@@ -79,6 +84,10 @@
                 // echo "<pre>" . print_r($post, 1) . "</pre>";
                 $taglist = $post['taglist'];
                 $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
+                //$tagId = intval($_GET['tag_id']);
+                $tagIdList = $post['tag_id'];
+                $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
+                $tagIdReverse = array_reverse($tagId)
 
                 ?>
 
@@ -93,8 +102,9 @@
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
                             <?php
-                                foreach ($tags as $tag) {
-                                    echo '<a href="tags.php?taglist=' . $tag . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                foreach ($tags as $key => $tag) {
+                                    //echo '<a href="tags.php?tag_id=' . substr($tag, -1) . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                    echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
                                 }
                             ?>
                         </footer>
