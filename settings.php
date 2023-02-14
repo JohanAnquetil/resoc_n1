@@ -8,7 +8,7 @@
     </head>
     
     <body>
-        
+
         <?php include('header.php'); ?>
 
         <div id="wrapper" class='profile'>
