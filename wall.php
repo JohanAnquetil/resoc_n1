@@ -61,6 +61,7 @@
                         posts.content,
                         posts.created,
                         users.alias as author_name,
+                        users.id as author_id,
                     COUNT(likes.id) as like_number,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist,
                     GROUP_CONCAT(DISTINCT tags.id) AS tag_id
@@ -87,7 +88,8 @@
                 //$tagId = intval($_GET['tag_id']);
                 $tagIdList = $post['tag_id'];
                 $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
-                $tagIdReverse = array_reverse($tagId)
+                $tagIdReverse = array_reverse($tagId);
+                $authorId = $post['author_id'];
 
                 ?>
 
@@ -95,7 +97,7 @@
                         <h3>
                             <time datetime='2020-02-01 11:12:13' ><?php echo $post['created']?></time>
                         </h3>
-                        <address>par <?php echo $post['author_name'] ?></address>
+                        <address>par <?php echo '<a href="wall.php?user_id=' . $authorId . '">' . $post['author_name'] . ' ' . '</a>'; ?></address>
                         <div>
                             <p><?php echo $post['content']?></p>
                         </div>
