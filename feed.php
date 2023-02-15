@@ -42,9 +42,8 @@
                 <section>
 
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez tous les message des utilisatrices
-                    auxquelles est abonnée l'utilisatrice <?php echo $user['alias'] ?>
-                    
+                    <p>Sur cette page, vous trouverez tous les messages des utilisatrices
+                        auxquelles l'utilisatrice <?php echo $user['alias'] ?> est abonnée.
                     </p>
 
                 </section>

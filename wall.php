@@ -44,9 +44,7 @@
 
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
-                        (n° <?php echo $userId ?>)
-                    </p>
+                    <p>Sur cette page, vous trouverez tous les messages de l'utilisatrice <?php echo $user['alias'] ?>.</p>
                 </section>
                 
             </aside>

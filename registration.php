@@ -32,7 +32,7 @@
                     if ($enCoursDeTraitement) {
                         // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
                         // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
-                        echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                                //echo "<pre>" . print_r($_POST, 1) . "</pre>";
                         // et complétez le code ci dessous en remplaçant les ???
                         $new_email = $_POST['email'];
                         $new_alias = $_POST['pseudo'];
@@ -51,30 +51,32 @@
                         $new_passwd = md5($new_passwd);
 
                         //Etape 5 : construction de la requete
-                        $lInstructionSql = "INSERT INTO users (id, email, password, alias) "
-                                . "VALUES (NULL, "
-                                . "'" . $new_email . "', "
-                                . "'" . $new_passwd . "', "
-                                . "'" . $new_alias . "'"
-                                . ");";
+                        $lInstructionSql = "INSERT INTO users VALUES (NULL, '$new_email', '$new_passwd', '$new_alias') ";
+                            //Instructions de base de l'exercice :
+                                // $lInstructionSql = "INSERT INTO users (id, email, password, alias) "
+                                //         . "VALUES (NULL, "
+                                //         . "'" . $new_email . "', "
+                                //         . "'" . $new_passwd . "', "
+                                //         . "'" . $new_alias . "'"
+                                //         . ");";
 
                         //Etape 6: exécution de la requete
                         $ok = $mysqli->query($lInstructionSql);
                         if (! $ok) {
                             echo "L'inscription a échouée : " . $mysqli->error;
                         } else {
-                            echo "Votre inscription est un succès " . $new_alias;
+                            echo "Votre inscription est un succès " . $new_alias . ". <br>";
                             echo "<a href='login.php'>Connectez-vous.</a>";
                         }
                     }
                     ?>
 
                     <form action="registration.php" method="post">
-                        <input type='hidden' name='???' value='achanger'>
+                        <input type='hidden' name='id' value='$new_email'>
                         <dl>
                             <dt><label for='pseudo'>Pseudo</label></dt>
                             <dd><input type='text' name='pseudo'></dd>
-                            <dt><label for='email'>E-Mail</label></dt>
+                            <dt><label for='email'>E-mail</label></dt>
                             <dd><input type='email' name='email'></dd>
                             <dt><label for='motpasse'>Mot de passe</label></dt>
                             <dd><input type='password' name='motpasse'></dd>
