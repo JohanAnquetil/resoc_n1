@@ -11,7 +11,7 @@
 
     <body>
 
-    <?php include('header.php'); ?>
+        <?php include('header.php'); ?>
 
         <div id="wrapper" >
 
@@ -33,8 +33,7 @@
                     $listAuteurs = [];
                     $laQuestionEnSql = "SELECT * FROM users";
                     $lesInformations = $mysqli->query($laQuestionEnSql);
-                    while ($user = $lesInformations->fetch_assoc())
-                    {
+                    while ($user = $lesInformations->fetch_assoc()) {
                         $listAuteurs[$user['id']] = $user['alias'];
                     }
 

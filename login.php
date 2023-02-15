@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+?>
 
 <!doctype html>
 <html lang="fr">
@@ -63,6 +65,7 @@
                             // documentation: https://www.php.net/manual/fr/session.examples.basic.php
                             $user_id = $user['id'];
                             $_SESSION['connected_id'] = $user_id;
+                            print_r($_SESSION['connected_id']);
                         }
                     }
                     ?>

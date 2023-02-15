@@ -9,7 +9,10 @@
 
     <body>
 
-        <?php include('header.php'); ?>
+        <?php
+            include('header.php');
+        ?>
+
 
         <div id="wrapper">
 
@@ -50,6 +53,13 @@
             </aside>
 
             <main>
+
+                <!-- <?php if (isset($_SESSION['connected_id'])) {
+                    include('wall_publish.php');
+                }
+                ?> -->
+
+                <?php include('wall_publish.php'); ?>
 
                 <?php
 
