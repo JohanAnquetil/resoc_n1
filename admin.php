@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>ReSoC - Administration</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
 
@@ -22,7 +22,9 @@
             exit();
         }
         ?>
+
         <div id="wrapper" class='admin'>
+
             <aside>
                 <h2>Mots-clés</h2>
                 <?php
@@ -53,6 +55,7 @@
                     </article>
                 <?php } ?>
             </aside>
+
             <main>
                 <h2>Utilisatrices</h2>
                 <?php
@@ -88,6 +91,7 @@
                     </article>
                 <?php } ?>
             </main>
+
         </div>
     </body>
 </html>

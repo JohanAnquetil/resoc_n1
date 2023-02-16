@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <title>ReSoC - Post d'usurpateur</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="styles.css"/>
     </head>
 
     <body>
@@ -47,7 +47,7 @@
                     if ($enCoursDeTraitement) {
                         // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
                         // observez le résultat de cette ligne de débug (vous l'effacerez ensuite) :
-                            //echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                            echo "<pre>" . print_r($_POST, 1) . "</pre>";
                         // et complétez le code ci dessous en remplaçant les ???
                         $authorId = $_POST['auteur'];
                         $postContent = $_POST['message'];

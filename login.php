@@ -6,20 +6,22 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>ReSoC - Connexion</title>
+        <title>Connexion</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="styles.css"/>
     </head>
     
     <body>
 
-        <?php include('header.php'); ?>
+    <header>
+        <img src="resoc.jpg" alt="Logo de notre réseau social"/>
+    </header>
 
         <div id="wrapper" >
 
             <aside>
                 <h2>Présentation</h2>
-                <p>Bienvenu sur notre réseau social.</p>
+                <p>Bienvenue sur notre réseau social !</p>
             </aside>
 
             <main>
@@ -60,12 +62,13 @@
                         if (! $user || $user["password"] != $passwdAVerifier) {
                             echo "La connexion a échouée.";
                         } else {
-                            echo "Votre connexion est un succès " . $user_id . ".";
                             // Etape 7 : Se souvenir que l'utilisateur s'est connecté pour la suite
                             // documentation: https://www.php.net/manual/fr/session.examples.basic.php
                             $user_id = $user['id'];
                             $_SESSION['connected_id'] = $user_id;
-                            print_r($_SESSION['connected_id']);
+                            // Etape 8 : Ouvrir l'accès à toutes les pages (redirection vers la page Admin)
+                            header("refresh:0;url=admin.php" );
+                            //echo "Votre connexion est un succès " . $user_id . ".";
                         }
                     }
                     ?>
@@ -78,14 +81,14 @@
                             <dt><label for='motpasse'>Mot de passe</label></dt>
                             <dd><input type='password'name='motpasse'></dd>
                         </dl>
-                        <input type='submit'>
+                        <input class="submit" type='submit'>
                     </form>
 
                     <br>
 
                     <p>
                         Pas de compte ?
-                        <a href='registration.php'>Inscrivez-vous.</a>
+                        <a class="registration" href='registration.php'>Inscrivez-vous.</a>
                     </p>
 
                 </article>

@@ -26,20 +26,15 @@
         $ok = $mysqli->query($lInstructionSql);
         if (! $ok) {
             echo "Impossible de publier le message: " . $mysqli->error;
-        } else {
-            echo "Message publié !";
         }
     }
-    echo "<pre>" . print_r($_SESSION['user_id']) . "</pre>";
+    //echo "<pre>" . print_r($_SESSION['user_id']) . "</pre>";
     ?>
 
     <form action=<?php echo "wall.php?user_id=" . $user_idactuel ?> method='post'>
         <input type='hidden' name='???' value='a_changer'>
-        <h3>Mon message</h3>
-        <dl>
-            <dd><textarea name='message'></textarea></dd>
-        </dl>
-        <input type='submit'>
+        <textarea name='message' id="publish_message" placeholder="Que voulez-vous dire ?" rows="5" cols="110"></textarea>
+        <input class="submit" type='submit' value="Publier mon message">
     </form>
 
 </article>

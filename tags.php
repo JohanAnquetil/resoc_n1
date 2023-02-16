@@ -11,40 +11,65 @@
         <?php include('header.php'); ?>
 
         <div id="wrapper">
+            <!-- Cette page est similaire à wall.php ou feed.php
+            mais elle porte sur les mots-clés (tags) -->
+            
             <?php
-            /**
-             * Cette page est similaire à wall.php ou feed.php
-             * mais elle porte sur les mots-clés (tags)
-            */
-
             //Etape 1: Le mur concerne un mot-clé en particulier
-            $tagId = intval($_GET['tag_id']);
+            //$tagId = intval($_GET['tag_id']);
             ?>
+            
             <?php
-
             //Etape 2: se connecter à la base de donnée
             $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
             ?>
 
             <aside>
+
+                <!-- Etape 3: -->
+
+                <!-- Récupérer tous les mots clés -->
                 <?php
-                //Etape 3: récupérer le nom du mot-clé
+                    $listTags = [];
+                    $laQuestionEnSql = "SELECT * FROM tags";
+                    $lesInformations = $mysqli->query($laQuestionEnSql);
+                    while ($tag = $lesInformations->fetch_assoc()) {
+                        $listTags[$tag['id']] = $tag['label'];
+                    }
+                ?>
+
+                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+
+                <section>
+                    <h3>Présentation</h3>
+                    <p>Sélectionnez un mot-clé pour retrouver les derniers messages le comportant :</p>
+                    <select name='tag'>
+                        <?php
+                            foreach ($listTags as $id => $label) {
+                                echo "<option value='$id'>$label</option>";
+                                $tagId = $id;
+                            }
+                            ?>
+                    </select>
+                    <?php print_r($tagId); ?>
+                </section>
+
+                <!-- Demande initiale : récupérer le nom du mot-clé -->
+                <!-- <?php
                 $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$tagId' ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 $tag = $lesInformations->fetch_assoc();
-                //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par le label et effacer la ligne ci-dessous
-                // echo "<pre>" . print_r($tag, 1) . "</pre>";
-                ?>
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
-                <section>
+                ?> -->
+                <!-- <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez les derniers messages comportant
                         le mot-clé <?php echo $tag['label'] ?>
                         (n° <?php echo $tagId ?>).
                     </p>
+                </section> -->
 
-                </section>
             </aside>
+
             <main>
                 <?php
                 //Etape 3: récupérer tous les messages avec un mot clé donné

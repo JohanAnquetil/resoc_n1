@@ -4,18 +4,20 @@
         <meta charset="utf-8">
         <title>ReSoC - Inscription</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="styles.css"/>
     </head>
 
     <body>
 
-        <?php include('header.php'); ?>
+        <header>
+            <img src="resoc.jpg" alt="Logo de notre réseau social"/>
+        </header>
 
         <div id="wrapper" >
 
             <aside>
                 <h2>Présentation</h2>
-                <p>Bienvenu sur notre réseau social.</p>
+                <p>Bienvenue sur notre réseau social !</p>
             </aside>
 
             <main>
@@ -65,8 +67,8 @@
                         if (! $ok) {
                             echo "L'inscription a échouée : " . $mysqli->error;
                         } else {
-                            echo "Votre inscription est un succès " . $new_alias . ". <br>";
-                            echo "<a href='login.php'>Connectez-vous.</a>";
+                            echo "Votre inscription est un succès " . $new_alias . " !";
+                            echo "<a class='registration' href='login.php'>Connectez-vous.</a>";
                         }
                     }
                     ?>
@@ -81,8 +83,16 @@
                             <dt><label for='motpasse'>Mot de passe</label></dt>
                             <dd><input type='password' name='motpasse'></dd>
                         </dl>
-                        <input type='submit'>
+                        <input class="submit" type='submit'>
                     </form>
+
+                    <br>
+
+                    <p>
+                        Vous avez déjà un compte ?
+                        <a class="registration" href='login.php'>Connectez-vous.</a>
+                    </p>
+
                 </article>
             </main>
         </div>

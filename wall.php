@@ -1,13 +1,13 @@
+<!-- <?php $user_idactuel = $_SESSION['connected_id'] ?> -->
+
 <!doctype html>
 <html lang="fr">
-
-<?php $user_idactuel = $_SESSION['connected_id'] ?>
 
     <head>
         <meta charset="utf-8">
         <title>ReSoC - Mur</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="styles.css"/>
     </head>
 
     <body>
@@ -57,12 +57,15 @@
 
             <main>
 
-                <!-- <?php if (isset($_SESSION['connected_id'])) {
+                <?php
+                //Si l'id du user connecté ($user_idactuel) est le même que
+                //l'id du user dont c'est la page ($userId)
+                //afficher le formulaire de publication d'un message (wall_publish.php)
+                if ($user_idactuel == $userId) {
                     include('wall_publish.php');
                 }
-                ?> -->
+                ?>
 
-                <?php include('wall_publish.php'); ?>
 
                 <?php
 

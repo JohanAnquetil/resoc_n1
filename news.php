@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>ReSoC - Actualités</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
 
@@ -51,7 +51,7 @@
                     SELECT posts.content,
                     posts.created,
                     users.alias as author_name,
-                    users.id as author_id, 
+                    users.id as author_id,
                     count(likes.id) as like_number,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist,
                     GROUP_CONCAT(DISTINCT tags.id) AS tag_id
