@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    $user_idactuel = $_SESSION['connected_id']
+?>
+
+
+
 <header>
 
     <a href='admin.php'>
@@ -7,17 +14,17 @@
     <nav id="menu">
         <a href="login.php">Connexion</a>
         <a href="news.php">Actualités</a>
-        <a href="wall.php?user_id=14">Mur</a>
-        <a href="feed.php?user_id=5">Flux</a>
+        <?php echo "<a href=". "wall.php?user_id=" . "$user_idactuel". ">" ?> Mur</a>
+        <?php echo "<a href=". "feed.php?user_id=" . "$user_idactuel". ">" ?> Flux</a>
         <a href="tags.php?tag_id=9">Mots-clés</a>
     </nav>
 
     <nav id="user">
         <a href="#">Profil</a>
         <ul>
-            <li><a href="settings.php?user_id=5">Paramètres</a></li>
-            <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
-            <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
+            <li><?php echo "<a href=". "settings.php?user_id=" . "$user_idactuel". ">" ?> Paramètres</a></li>
+            <li><?php echo "<a href=". "followers.php?user_id=" . "$user_idactuel". ">" ?> Mes suiveurs</a></li>
+            <li><?php echo "<a href=". "subscriptions.php?user_id=" . "$user_idactuel". ">" ?> Flux</a></li>
         </ul>
     </nav>
 

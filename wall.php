@@ -1,5 +1,8 @@
 <!doctype html>
 <html lang="fr">
+
+<?php $user_idactuel = $_SESSION['connected_id'] ?>
+
     <head>
         <meta charset="utf-8">
         <title>ReSoC - Mur</title>

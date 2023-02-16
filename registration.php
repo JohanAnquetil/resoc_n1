@@ -83,11 +83,8 @@
                         </dl>
                         <input type='submit'>
                     </form>
-
                 </article>
-
             </main>
-            
         </div>
     </body>
 </html>

@@ -1,4 +1,7 @@
+<?php $user_idactuel = $_SESSION['connected_id'] ?>
+
 <article>
+
     <?php
     $userId =intval($_GET['user_id']);
     $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
@@ -27,10 +30,10 @@
             echo "Message publié !";
         }
     }
-
+    echo "<pre>" . print_r($_SESSION['user_id']) . "</pre>";
     ?>
 
-    <form action='wall.php?user_id=14' method='post'>
+    <form action=<?php echo "wall.php?user_id=" . $user_idactuel ?> method='post'>
         <input type='hidden' name='???' value='a_changer'>
         <h3>Mon message</h3>
         <dl>
