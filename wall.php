@@ -49,6 +49,16 @@
                     <h3>Mur</h3>
                     <p>Retrouvez tous les messages de <?php echo $user['alias'] ?>.</p>
                     <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+
+                    <?php
+                    //Si l'id du user connecté ($user_idactuel) est différent
+                    //de l'id du user dont c'est la page ($userId)
+                    //afficher un bouton pour s'abonner (wall_subscribe.php)
+                    if ($user_idactuel != $userId) {
+                        include('wall_subscribe.php');
+                    }
+                    ?>
+
                 </section>
                 
             </aside>
@@ -74,6 +84,7 @@
                         posts.created,
                         users.alias as author_name,
                         users.id as author_id,
+                        posts.id as post_id,
                     COUNT(likes.id) as like_number,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist,
                     GROUP_CONCAT(DISTINCT tags.id) AS tag_id
@@ -102,6 +113,8 @@
                 $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
                 $tagIdReverse = array_reverse($tagId);
                 $authorId = $post['author_id'];
+                $postId = $post['post_id'];
+                $postContent = $post['content'];
 
                 ?>
 
@@ -114,11 +127,27 @@
                             <p><?php echo $post['content']?></p>
                         </div>
                         <footer>
-                            <small>♥ <?php echo $post['like_number'] ?></small>
+                            <small>
+                                <?php include('like.php'); ?>
+                            </small>
                             <?php
                                 foreach ($tags as $key => $tag) {
-                                    //echo '<a href="tags.php?tag_id=' . substr($tag, -1) . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
                                     echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                    
+                                    /* A COMPLETER
+                                    //Si le message comporte un mot commençant par un #
+                                    //ajouter dans la table posts_tags (post_id & tag_id)
+                                    $hashtag = "/#/";
+                                    if (preg_match($hashtag, $postContent, $matches, PREG_OFFSET_CAPTURE)) {
+                                        //if (le mot est dans la table TAGS){
+                                        //    l'ajouter dans la table posts_tags
+                                        //    $sqlQuery = "INSERT INTO posts_tags VALUES (NULL, '$postId', '$tagIdReverse[$key]')";
+                                        //}
+                                        echo "Un mot a été trouvé";
+                                        echo "tag id : " . $tagIdReverse[$key];
+                                        echo "post id : " . $postId;
+                                    }
+                                     */
                                 }
                             ?>
                         </footer>

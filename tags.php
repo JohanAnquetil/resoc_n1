@@ -52,12 +52,6 @@
                     ?>
 
                     <div>
-                        <!-- <form method="post">
-                            <input type="submit" class="tag"
-                                name="<?php echo $idTag; ?>"
-                                value="<?php echo $tagLabel; ?>" >
-                            </input>
-                        </form> -->
                         <p class="tag" >
                             <?php
                             echo '<a href="tags.php?tag_id=' . $idTag . '">' . '#' . $tagLabel . ' ' . '</a>';
@@ -91,15 +85,12 @@
             
             <!-- Etape 3 -->
             <?php
-            //Si le bouton du tag est cliqué, récupérer les données liées au $tagId correspondant
-            //if (isset($_POST[$tagId])) {
-            //if (isset($tagId)) {
-
                 $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
                     users.alias as author_name,
                     users.id as author_id,
+                    posts.id as post_id,
                     count(likes.id) as like_number,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist,
                     GROUP_CONCAT(DISTINCT tags.id) AS tag_id
@@ -126,6 +117,7 @@
                     $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
                     $tagIdReverse = array_reverse($tagId);
                     $authorId = $post['author_id'];
+                    $postId = $post['post_id'];
     
                     // echo "<pre>" . print_r($post, 1) . "</pre>";
 
@@ -139,7 +131,9 @@
                             <p><?php echo $post['content'] ?></p>
                         </div>
                         <footer>
-                            <small>♥ <?php echo $post['like_number'] ?></small>
+                            <small>
+                                <?php include('like.php'); ?>
+                            </small>
                             <?php
                                 foreach ($tags as $key => $tag) {
                                     echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
@@ -150,7 +144,6 @@
 
             <?php
                 } //fin de la boucle while
-            //} //fin du if
             ?>
 
 

@@ -49,6 +49,7 @@
                     posts.created,
                     users.alias as author_name,
                     users.id as author_id,
+                    posts.id as post_id,
                     count(likes.id) as like_number,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist,
                     GROUP_CONCAT(DISTINCT tags.id) AS tag_id
@@ -79,6 +80,7 @@
                     $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
                     $tagIdReverse = array_reverse($tagId);
                     $authorId = $post['author_id'];
+                    $postId = $post['post_id'];
     
                     //echo "<pre>" . print_r($post, 1) . "</pre>";
 
@@ -94,7 +96,9 @@
                             <p><?php echo $post['content'] ?></p>
                         </div>
                         <footer>
-                            <small>♥ <?php echo $post['like_number'] ?></small>
+                            <small>
+                                <?php include('like.php'); ?>
+                            </small>
                             <?php
                                 foreach ($tags as $key => $tag) {
                                     echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag

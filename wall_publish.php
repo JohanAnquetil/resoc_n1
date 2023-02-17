@@ -5,14 +5,14 @@
     <?php
     $userId =intval($_GET['user_id']);
     $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
-
+    
     //Vérifier si le formulaire contient un message
     $enCoursDeTraitement = isset($_POST['message']);
-
+    
     //Si un message a été soumis :
     if ($enCoursDeTraitement) {
-
-        //1. Stocker le message dans une variable
+        
+        //1. Stocker le message dans une variable puis repérer s'il y a un #
         $postContent = $_POST['message'];
 
         //2. Eviter les injection SQL : https://www.w3schools.com/sql/sql_injection.asp
@@ -24,11 +24,16 @@
         
         //4. Executer la requête
         $ok = $mysqli->query($lInstructionSql);
-        if (! $ok) {
-            echo "Impossible de publier le message: " . $mysqli->error;
-        }
+            //Si ça ne fonctionne pas :
+            if (! $ok) {
+                echo "Impossible de publier le message: " . $mysqli->error;
+            }
+            //Si le message contient un # :
+            // $hashtag = "/#/";
+            // if (preg_match($hashtag, $postContent, $matches, PREG_OFFSET_CAPTURE)) {
+            //     $sqlQuery = "INSERT INTO posts_tags VALUES (NULL, '$postId', '$tagIdReverse[$key]')";
+            // }
     }
-    //echo "<pre>" . print_r($_SESSION['user_id']) . "</pre>";
     ?>
 
     <form action=<?php echo "wall.php?user_id=" . $user_idactuel ?> method='post'>

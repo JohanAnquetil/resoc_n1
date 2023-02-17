@@ -67,7 +67,7 @@
                             $user_id = $user['id'];
                             $_SESSION['connected_id'] = $user_id;
                             // Etape 8 : Ouvrir l'accès à toutes les pages (redirection vers la page Admin)
-                            header("refresh:0;url=admin.php" );
+                            header("refresh:0;url=admin.php");
                             //echo "Votre connexion est un succès " . $user_id . ".";
                         }
                     }
