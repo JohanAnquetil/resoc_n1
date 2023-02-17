@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Les messages par mot-clé</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
         
@@ -17,7 +17,7 @@
             
             <?php
             //Etape 1: Le mur concerne un mot-clé en particulier
-            //$tagId = intval($_GET['tag_id']);
+            $tagId = intval($_GET['tag_id']); //change selon le tag sur lequel on clique
             ?>
             
             <?php
@@ -40,15 +40,29 @@
                         $listTags = [];
                         $laQuestionEnSql = "SELECT * FROM tags";
                         $lesInformations = $mysqli->query($laQuestionEnSql);
+
+                        $tag = $lesInformations->fetch_assoc(); //Array ( [id] => 7 [label] => culture )
+                        
                         while ($tag = $lesInformations->fetch_assoc()) {
-                            //$listTags[$tag['id']] = $tag['label'];
+                            $listTags[$tag['id']] = $tag['label']; //Array ( [7] => culture )
                             $tagLabel = $tag["label"];
-                            $tagId = $tag["id"]
+                            $idTag = $tag["id"];
+                        //print_r($tag);
+                        //print_r($listTags);
                     ?>
 
                     <div>
-                        <input type="button" name="tag" class="tag" value="<?php echo $tagLabel; ?>" > </input>
-                        <?php print_r("id : " . $tagId); ?>
+                        <!-- <form method="post">
+                            <input type="submit" class="tag"
+                                name="<?php echo $idTag; ?>"
+                                value="<?php echo $tagLabel; ?>" >
+                            </input>
+                        </form> -->
+                        <p class="tag" >
+                            <?php
+                            echo '<a href="tags.php?tag_id=' . $idTag . '">' . '#' . $tagLabel . ' ' . '</a>';
+                            ?>
+                        </p>
                     </div>
 
                     <?php
@@ -74,12 +88,12 @@
             </aside>
 
             <main>
-
-                <!-- Etape 3 -->
-                <?php
-                //Si le bouton du tag est cliqué, récupérer les données liées au $tagId correspondant
-                //if (isset($_POST['tag'])) {
-                if (isset($tagId)) {
+            
+            <!-- Etape 3 -->
+            <?php
+            //Si le bouton du tag est cliqué, récupérer les données liées au $tagId correspondant
+            //if (isset($_POST[$tagId])) {
+            //if (isset($tagId)) {
 
                 $laQuestionEnSql = "
                     SELECT posts.content,
@@ -134,7 +148,10 @@
                         </footer>
                     </article>
 
-                <?php } } ?>
+            <?php
+                } //fin de la boucle while
+            //} //fin du if
+            ?>
 
 
             </main>

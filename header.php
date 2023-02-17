@@ -27,7 +27,7 @@
 
         <!-- <a href="tags.php?tag_id=9">Mots-clés</a> -->
         <div class="lienMenu">
-            <a href="tags.php">Mots-clés</a>
+            <a href="tags.php?tag_id=">Mots-clés</a>
         <div>
 
         <div id="user">

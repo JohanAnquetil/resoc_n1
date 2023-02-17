@@ -228,14 +228,18 @@ form dl dd textarea{width:40em;height: 15em;}
     padding: 10px;
 }
 
-.tag{
-    border: none;
-    background-color: #7965f7;
-    color: white;
+.tag a{
+    border: solid 1px #7965f7;
+    background-color: white ;
+    color: #7965f7;
     font-family: 'Poppins', sans-serif;
     border-radius: 10px;
     padding: 5px 10px;
     cursor: pointer;
-    margin-bottom: 10px;
     font-size: 16px;
+}
+.tag a:hover{
+    border: none;
+    background-color: #7965f7;
+    color: white;
 }

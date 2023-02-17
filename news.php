@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Actualités</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
 
@@ -35,18 +35,15 @@
                 // Etape 1: Ouvrir une connexion avec la base de donnée.
                 $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
                 //verification
-                if ($mysqli->connect_errno)
-                {
+                if ($mysqli->connect_errno) {
                     echo "<article>";
-                    echo("Échec de la connexion : " . $mysqli->connect_error);
-                    echo("<p>Indice: Vérifiez les parametres de <code>new mysqli(...</code></p>");
+                    echo "Échec de la connexion : " . $mysqli->connect_error;
+                    echo "<p>Indice: Vérifiez les parametres de <code>new mysqli(...</code></p>";
                     echo "</article>";
                     exit();
                 }
 
                 // Etape 2: Poser une question à la base de donnée et récupérer ses informations
-                // cette requete vous est donnée, elle est complexe mais correcte,
-                // si vous ne la comprenez pas c'est normal, passez, on y reviendra
                 $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
@@ -68,8 +65,8 @@
                 // Vérification
                 if (! $lesInformations) {
                     echo "<article>";
-                    echo("Échec de la requete : " . $mysqli->error);
-                    echo("<p>Indice: Vérifiez la requete  SQL suivante dans phpmyadmin<code>$laQuestionEnSql</code></p>");
+                    echo "Échec de la requete : " . $mysqli->error;
+                    echo "<p>Indice: Vérifiez la requete  SQL suivante dans phpmyadmin<code>$laQuestionEnSql</code></p>";
                     exit();
                 }
 
@@ -83,16 +80,11 @@
                     $tagIdReverse = array_reverse($tagId);
                     $authorId = $post['author_id'];
     
-                    //la ligne ci-dessous doit etre supprimée mais regardez ce
-                    //qu'elle affiche avant pour comprendre comment sont organisées les information dans votre
-                   /* echo "<pre>" . print_r($post, 1) . "</pre>";*/
+                    //echo "<pre>" . print_r($post, 1) . "</pre>";
 
-                    // @todo : Votre mission c'est de remplacer les AREMPLACER par les bonnes valeurs
-                    // ci-dessous par les bonnes valeurs cachées dans la variable $post
-                    // on vous met le pied à l'étrier avec created
-                    //
                     // avec le ? > ci-dessous on sort du mode php et on écrit du html comme on veut... mais en restant dans la boucle
                     ?>
+
                     <article>
                         <h3>
                             <time><?php echo $post['created'] ?></time>
@@ -110,10 +102,12 @@
                             ?>
                         </footer>
                     </article>
+
                     <?php
                     // avec le <?php ci-dessus on retourne en mode php
-                }// cette accolade ferme et termine la boucle while ouverte avant.
-                ?>
+
+                    }// cette accolade ferme et termine la boucle while ouverte avant
+                    ?>
 
             </main>
 
