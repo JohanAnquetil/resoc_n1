@@ -2,11 +2,12 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>ReSoC - Les message par mot-clé</title>
+        <title>Les messages par mot-clé</title>
         <meta name="author" content="Julien Falconnet">
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
+        
 
         <?php include('header.php'); ?>
 
@@ -26,32 +27,34 @@
 
             <aside>
 
-                <!-- Etape 3: -->
-
-                <!-- Récupérer tous les mots clés -->
-                <?php
-                    $listTags = [];
-                    $laQuestionEnSql = "SELECT * FROM tags";
-                    $lesInformations = $mysqli->query($laQuestionEnSql);
-                    while ($tag = $lesInformations->fetch_assoc()) {
-                        $listTags[$tag['id']] = $tag['label'];
-                    }
-                ?>
-
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <!-- <img src="user.jpg" alt="Portrait de l'utilisatrice"/> -->
 
                 <section>
-                    <h3>Présentation</h3>
-                    <p>Sélectionnez un mot-clé pour retrouver les derniers messages le comportant :</p>
-                    <select name='tag'>
-                        <?php
-                            foreach ($listTags as $id => $label) {
-                                echo "<option value='$id'>$label</option>";
-                                $tagId = $id;
-                            }
-                            ?>
-                    </select>
-                    <?php print_r($tagId); ?>
+                    <h3>Mots-clés</h3>
+                    <p>Cliquez sur un mot-clé pour retrouver les derniers messages le comportant :</p>
+
+                <!-- Etape 3: -->
+
+                    <!-- Récupérer tous les mots clés -->
+                    <?php
+                        $listTags = [];
+                        $laQuestionEnSql = "SELECT * FROM tags";
+                        $lesInformations = $mysqli->query($laQuestionEnSql);
+                        while ($tag = $lesInformations->fetch_assoc()) {
+                            //$listTags[$tag['id']] = $tag['label'];
+                            $tagLabel = $tag["label"];
+                            $tagId = $tag["id"]
+                    ?>
+
+                    <div>
+                        <input type="button" name="tag" class="tag" value="<?php echo $tagLabel; ?>" > </input>
+                        <?php print_r("id : " . $tagId); ?>
+                    </div>
+
+                    <?php
+                        } //fermeture de la boucle while
+                    ?>
+
                 </section>
 
                 <!-- Demande initiale : récupérer le nom du mot-clé -->
@@ -71,8 +74,13 @@
             </aside>
 
             <main>
+
+                <!-- Etape 3 -->
                 <?php
-                //Etape 3: récupérer tous les messages avec un mot clé donné
+                //Si le bouton du tag est cliqué, récupérer les données liées au $tagId correspondant
+                //if (isset($_POST['tag'])) {
+                if (isset($tagId)) {
+
                 $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
@@ -125,7 +133,8 @@
                             ?>
                         </footer>
                     </article>
-                <?php } ?>
+
+                <?php } } ?>
 
 
             </main>

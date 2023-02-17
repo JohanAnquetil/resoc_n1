@@ -2,9 +2,9 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>ReSoC - Flux</title>
+        <title>Flux</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
 
@@ -38,12 +38,12 @@
                 $user = $lesInformations->fetch_assoc();
                 ?>
 
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <!-- <img src="user.jpg" alt="Portrait de l'utilisatrice"/> -->
                 <section>
 
-                    <h3>Présentation</h3>
-                    <p>Sur cette page, vous trouverez tous les messages des utilisatrices
-                        auxquelles l'utilisatrice <?php echo $user['alias'] ?> est abonnée.
+                    <h3>Flux</h3>
+                    <p>Retrouvez tous les messages des utilisatrices
+                        auxquelles <?php echo $user['alias'] ?> est abonnée.
                     </p>
 
                 </section>

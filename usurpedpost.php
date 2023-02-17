@@ -4,9 +4,9 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>ReSoC - Post d'usurpateur</title>
+        <title>Post d'usurpateur</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
 
     <body>

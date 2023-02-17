@@ -2,9 +2,9 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>ReSoC - Actualités</title>
+        <title>Actualités</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
 
@@ -13,10 +13,10 @@
         <div id="wrapper">
 
             <aside>
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <!-- <img src="user.jpg" alt="Portrait de l'utilisatrice"/> -->
                 <section>
-                    <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez les derniers messages de
+                    <h3>Actualités</h3>
+                    <p>Retrouvez les derniers messages de
                         toutes les utilisatrices du site.</p>
                 </section>
             </aside>
@@ -81,7 +81,7 @@
                     $tagIdList = $post['tag_id'];
                     $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
                     $tagIdReverse = array_reverse($tagId);
-                    $authorId = $post['author_id'];  
+                    $authorId = $post['author_id'];
     
                     //la ligne ci-dessous doit etre supprimée mais regardez ce
                     //qu'elle affiche avant pour comprendre comment sont organisées les information dans votre

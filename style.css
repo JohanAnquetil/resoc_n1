@@ -1,83 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap');
 
 body{
-    background-color: #1c1e5a;
+    background-color: #f8f8ff;
     font-family: 'Poppins', sans-serif;
-    color: #1c1e5a;
+    color: #646681;
 }
 
-a{text-decoration: none; color:#1c1e5a;}
+a{text-decoration: none; color:#646681;}
 a:hover{color:#7965f7;}
 
 body>header{
-    background-color: #f2f2f6;
+    background-color: #ecedf6;
+    box-shadow: 5px 5px 5px #cccdde;
+    border:#ecedf6 solid 1px;
     display:flex;
+    justify-content: space-between;
+    align-items: stretch;
     width:80em;
     margin:0 auto 2em auto;    
     padding:0;
     border-radius: 1em;
-    justify-content: center;
+    height: 5em;
 }
+
+/*LOGO*/
 body>header img{
-    height:5em;
-    border-radius: 1em;
+    height: 5em;
+    border-radius: 1em 0 0 1em;
 }
+body>header img #logo{
+    height: 100%;
+}
+
+/*MENU*/
 body>header #menu {
     display:flex;
-    width:50%;
-    align-items: stretch;
-    border-left: 1px solid #99b;
+    justify-content: space-between;
+    /* border: 1px solid #99b; */
+}
+.lienMenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5em;
 }
 body>header #menu a{
-    flex:1;
     text-align: center;
-    padding-top:2em;
-    border-right: 1px solid #99b;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-body>header a:hover
-{
-    background-color: #7965f7;
-    color: white;
-    text-decoration: none;
+    padding: 2em;
+    width: 180px;
 }
 body>header ul{list-style: none;}
-body>header #user
-{
-    margin-left: auto;
-    flex:0.2;
-    border-left: 1px solid #99b;
+
+/*USER*/
+body>header #user{
+    height: 5em;
 }
 body>header #user>a{
+    width: 150px;
     display:block;
     text-align: center;
-    padding:2em 0;
-    width:100%;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-body>header #user>a:hover{
-    border-radius: 0 15px 15px 0;
+    margin-bottom: 0.5em;
 }
 body>header #user ul{ 
     display: none;
     position: absolute;
-    padding:0;
-    margin:0;
-    margin-left:-5em;
+    padding: 0;
+    margin: 0;
     background-color: #fff;
     border: 1px solid #99b;
-
-    z-index: 1;
+    margin-top: -2em;
 }
 body>header #user ul li a{
+    text-align: center;
     display:block;
-    width:10em;
-    padding:1em;
-    border-bottom: 1px solid #99b;
+    width: 12em;
+    padding: 0.8em;
+    border: 1px solid #99b;
 }
 body>header #user:hover ul{
     display:block;
@@ -91,6 +95,8 @@ body>header #user:hover ul{
 }
 #wrapper aside{
     background-color: #fff;
+    box-shadow: 5px 5px 5px #cccdde;
+    border:#ecedf6 solid 1px;
     flex:1;
     padding:1em;
     border-radius: 1em;  
@@ -101,6 +107,9 @@ body>header #user:hover ul{
     width:50%;
     margin:auto;
 }
+#wrapper aside h3 p{
+    text-align: center;
+}
 
 #wrapper main{
     flex:3;
@@ -110,6 +119,8 @@ body>header #user:hover ul{
 }
 #wrapper main article{
     background-color: #fff;
+    box-shadow: 5px 5px 5px #cccdde;
+    border:#ecedf6 solid 1px;
     padding:1em;
     margin-bottom: 1em ;
     border-radius: 1em;
@@ -134,13 +145,24 @@ body>header #user:hover ul{
     margin-top: 1em;
     text-align: right;
 }
+#wrapper main article footer a{
+    color: #7965f7;
+}
 #wrapper main article footer small{
     float:left;
 }
 
 #wrapper.admin{flex-direction: row-reverse}
 #wrapper.admin aside{flex:1;margin-left:1em;border-radius:1em;padding:0;}
-#wrapper.admin main{flex:2;background-color: #fff;border-radius:1em;padding:0;margin-bottom: 1em;}
+#wrapper.admin main{
+    flex:2;
+    background-color: #fff;
+    box-shadow: 5px 5px 5px #cccdde;
+    border:#ecedf6 solid 1px;
+    border-radius:1em;
+    padding:0;
+    margin-bottom: 1em;
+}
 #wrapper.admin h2{text-align: center;}
 #wrapper.admin h3{margin:0;}
 #wrapper.admin nav{text-align: right;}
@@ -204,4 +226,16 @@ form dl dd textarea{width:40em;height: 15em;}
 #publish_message{
     border-radius: 15px;
     padding: 10px;
+}
+
+.tag{
+    border: none;
+    background-color: #7965f7;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 16px;
 }

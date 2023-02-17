@@ -2,9 +2,9 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>ReSoC - Paramètres</title>
+        <title>Paramètres</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
     
     <body>
@@ -14,11 +14,11 @@
         <div id="wrapper" class='profile'>
 
             <aside>
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
-                    <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez les informations de l'utilisatrice
+                    <h3>Paramètres</h3>
+                    <p>Retrouvez les informations de l'utilisatrice
                         n° <?php echo intval($_GET['user_id']) ?>.</p>
+                    <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 </section>
             </aside>
 

@@ -1,13 +1,11 @@
-<!-- <?php $user_idactuel = $_SESSION['connected_id'] ?> -->
-
 <!doctype html>
 <html lang="fr">
 
     <head>
         <meta charset="utf-8">
-        <title>ReSoC - Mur</title>
+        <title>Mur</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
 
     <body>
@@ -46,11 +44,11 @@
                 //echo "<pre>" . print_r($user, 1) . "</pre>";
                 ?>
 
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
 
                 <section>
-                    <h3>Présentation</h3>
-                    <p>Sur cette page, vous trouverez tous les messages de l'utilisatrice <?php echo $user['alias'] ?>.</p>
+                    <h3>Mur</h3>
+                    <p>Retrouvez tous les messages de <?php echo $user['alias'] ?>.</p>
+                    <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 </section>
                 
             </aside>
