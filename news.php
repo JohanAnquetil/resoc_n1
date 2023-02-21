@@ -44,12 +44,11 @@
                 }
 
                 // Etape 2: Poser une question à la base de donnée et récupérer ses informations
-                $laQuestionEnSql = "
-                    SELECT posts.content,
-                    posts.created,
-                    users.alias as author_name,
-                    users.id as author_id,
-                    posts.id as post_id,
+                $laQuestionEnSql = "SELECT  posts.content,
+                                            posts.created,
+                                            users.alias as author_name,
+                                            users.id as author_id,
+                                            posts.id as post_id,
                     count(likes.id) as like_number,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist,
                     GROUP_CONCAT(DISTINCT tags.id) AS tag_id
@@ -58,11 +57,12 @@
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id
                     LEFT JOIN tags       ON posts_tags.tag_id  = tags.id
                     LEFT JOIN likes      ON likes.post_id  = posts.id
+                    WHERE posts.parent_id IS NULL
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
                     LIMIT 5
                     ";
-                $lesInformations = $mysqli->query($laQuestionEnSql);
+                    $lesInformations = $mysqli->query($laQuestionEnSql);
                 // Vérification
                 if (! $lesInformations) {
                     echo "<article>";
@@ -105,8 +105,14 @@
                                 }
                             ?>
                         </footer>
-                        <?php include('answer_post.php'); ?>
-                        <p id="answer"><?php echo $postParentId ?></p>
+                        <?php
+                            //Si l'id du user connecté ($user_idactuel) est différent
+                            //de l'id du user dont c'est le post ($authorId)
+                            //pouvoir commenter le message
+                            if ($user_idactuel != $authorId) {
+                                include('answer_post.php');
+                            }
+                        ?>
                     </article>
 
                     <?php

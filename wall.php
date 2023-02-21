@@ -78,13 +78,12 @@
                 <?php
 
                 //Etape 3: récupérer tous les messages de l'utilisatrice
-                $laQuestionEnSql = "
-                    SELECT
-                        posts.content,
-                        posts.created,
-                        users.alias as author_name,
-                        users.id as author_id,
-                        posts.id as post_id,
+                $laQuestionEnSql = " SELECT
+                                        posts.content,
+                                        posts.created,
+                                        users.alias as author_name,
+                                        users.id as author_id,
+                                        posts.id as post_id,
                     COUNT(likes.id) as like_number,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist,
                     GROUP_CONCAT(DISTINCT tags.id) AS tag_id
@@ -105,16 +104,16 @@
                 //Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
 
                 while ($post = $lesInformations->fetch_assoc()) {
-                // echo "<pre>" . print_r($post, 1) . "</pre>";
-                $taglist = $post['taglist'];
-                $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
-                //$tagId = intval($_GET['tag_id']);
-                $tagIdList = $post['tag_id'];
-                $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
-                $tagIdReverse = array_reverse($tagId);
-                $authorId = $post['author_id'];
-                $postId = $post['post_id'];
-                $postContent = $post['content'];
+                    // echo "<pre>" . print_r($post, 1) . "</pre>";
+                    $taglist = $post['taglist'];
+                    $tags = explode(',', $taglist); // Divisez la chaîne de caractères en un tableau
+                    //$tagId = intval($_GET['tag_id']);
+                    $tagIdList = $post['tag_id'];
+                    $tagId = explode(',', $tagIdList); // Divisez la chaîne de caractères en un tableau
+                    $tagIdReverse = array_reverse($tagId);
+                    $authorId = $post['author_id'];
+                    $postId = $post['post_id'];
+                    $postContent = $post['content'];
 
                 ?>
 

@@ -257,3 +257,14 @@ form dl dd textarea{width:40em;height: 15em;}
 #tag_admin a{
     align-self: center;
 }
+
+#answer form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#answer .submit{
+    margin-left: 10px;
+}
