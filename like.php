@@ -3,13 +3,14 @@
 <div>
 
     <?php
+    $like_number_var = $post['like_number'];
+    print_r($like_number_var);
     //$userId = intval($_GET['user_id']);
     $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
     
     //Vérifier si le bouton est cliqué
     $enCoursDeTraitement = isset($_POST[$postId]);
     // $lInstructionDeleteSql = "DELETE FROM likes WHERE user_id = '$user_idactuel'AND post_id = '$postId";
-    
 
     //Si le bouton est cliqué :
     if ($enCoursDeTraitement) {
@@ -28,14 +29,12 @@
         } else {
             //echo "Vous avez bien liké le post n°$postId";
             header("refresh: 0");
-        }
-
-      
+        } 
     }
  
     ?>
     
-    <?php $lInstructionSql = "SELECT * FROM likes WHERE user_id = $user_idactuel AND post_id = $postId"; 
+   <?php $lInstructionSql = "SELECT * FROM likes WHERE user_id = $user_idactuel AND post_id = $postId"; 
     $ok = $mysqli->query($lInstructionSql);
     $post = $ok->fetch_assoc();
     ?>
@@ -49,7 +48,7 @@
             id="like"
             type='submit'
             name="<?php echo $postId ?>"
-            value="♥ <?php echo $post['like_number'] ?>">
+            value="♥ <?php echo $like_number_var ?> J'aime">
     </form>
     
     <?php } else { 
@@ -63,8 +62,8 @@
             id="dislike"
             type='submit'
             name="<?php echo $postId?>"
-            value="♥ <?php echo $post['like_number'] ?> Je n'aime plus">
+            value="<?php echo $like_number_var ?> ♥ Je n'aime plus">
     </form>
    <?php } ?>
 
-</div>
+</div>	
