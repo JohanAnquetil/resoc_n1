@@ -243,3 +243,17 @@ form dl dd textarea{width:40em;height: 15em;}
     background-color: #7965f7;
     color: white;
 }
+
+#follow{
+    font-size: 12px;
+}
+
+#tag_admin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#tag_admin a{
+    align-self: center;
+}

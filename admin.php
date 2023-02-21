@@ -46,12 +46,10 @@
                 while ($tag = $lesInformations->fetch_assoc()) {
                     // echo "<pre>" . print_r($tag, 1) . "</pre>";
                     ?>
-                    <article>
+                    <article id="tag_admin">
                         <h3><?php echo $tag['label'] ?></h3>
-                        <p><?php echo $tag['id'] ?></p>
-                        <nav>
-                            <a href="tags.php?tag_id=<?php echo $tag['id'] ?>">Messages</a>
-                        </nav>
+                        <!-- <p><?php echo $tag['id'] ?></p> -->
+                        <a href="tags.php?tag_id=<?php echo $tag['id'] ?>">Voir les publications</a>
                     </article>
                 <?php } ?>
             </aside>

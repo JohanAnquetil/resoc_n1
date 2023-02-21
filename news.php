@@ -105,6 +105,8 @@
                                 }
                             ?>
                         </footer>
+                        <?php include('answer_post.php'); ?>
+                        <p id="answer"><?php echo $postParentId ?></p>
                     </article>
 
                     <?php
