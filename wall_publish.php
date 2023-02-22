@@ -56,6 +56,8 @@
                         if (! $okQuery) {
                             echo "Impossible d'intégrer le tag à la base de données : " . $mysqli->error;
                         }
+                        
+                        //echo '<a href="tags.php?tag_id=' . $tagId . '">' . '#' . $tagLabel . ' ' . '</a>';
                     }
                 }
             }

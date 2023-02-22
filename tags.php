@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Les messages par mot-clé</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
         
@@ -123,31 +123,7 @@
 
                     ?>
                     <article>
-                        <header class="header_post">
-                            <h3> <time><?php echo $post['created'] ?></time> </h3>
-                            <p class="author"> <?php echo '<a href="wall.php?user_id=' . $authorId . '">' . $post['author_name'] . '</a>'; ?> </p>
-                        </header>
-                        <div>
-                            <p><?php echo $post['content'] ?></p>
-                        </div>
-                        <footer>
-                            <small>
-                                <?php include('like.php'); ?>
-                            </small>
-                            <?php
-                                foreach ($tags as $key => $tag) {
-                                    echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
-                                }
-                            ?>
-                        </footer>
-                        <?php
-                            //Si l'id du user connecté ($user_idactuel) est différent
-                            //de l'id du user dont c'est le post ($authorId)
-                            //pouvoir commenter le message
-                            if ($user_idactuel != $authorId) {
-                                include('answer_post.php');
-                            }
-                        ?>
+                        <?php include('post.php'); ?>
                     </article>
 
             <?php

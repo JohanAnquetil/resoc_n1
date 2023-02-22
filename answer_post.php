@@ -1,5 +1,5 @@
 <?php $user_idactuel = $_SESSION['connected_id'] ?>
-<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="styles.css"/>
 
 <div id="answer">
 
