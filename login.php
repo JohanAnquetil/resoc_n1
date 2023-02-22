@@ -28,6 +28,11 @@
                 <article>
                     <h2>Connexion</h2>
                     <?php
+                      if (isset($_SESSION['connected_id']))
+                     { 
+                         session_destroy();
+     
+                     }
                     /**TRAITEMENT DU FORMULAIRE*/
                     // Etape 1 : vérifier si on est en train d'afficher ou de traiter le formulaire
                     // si on recoit un champs email rempli il y a une chance que ce soit un traitement
