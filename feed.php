@@ -98,27 +98,9 @@
                 ?>
 
                 <article>
-
-                    <h3>
-                        <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
-                    </h3>
-
-                    <address><?php echo '<a href= "wall.php?user_id='. $authorId . '">' . $post['author_name'] . '</a>'; ?></address>
-                    
-                    <div>
-                        <p><?php echo $post['content']?></p>
-                    </div>
-                    <footer>
-                        <small>
-                            <?php include('like.php'); ?>
-                        </small>
-                        <?php
-                                foreach ($tags as $key => $tag) {
-                                    echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
-                                }
-                            ?>
-                    </footer>
+                    <?php include('post.php'); ?>
                 </article>
+
                 <?php } ?>
 
             </main>

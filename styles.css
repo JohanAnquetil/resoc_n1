@@ -6,6 +6,14 @@ body{
     color: #646681;
 }
 
+.post_content a{
+    color: #7965f7;
+    font-weight: 500;
+}
+.post_content a:hover{
+    text-decoration:underline;
+}
+
 a{text-decoration: none; color:#646681;}
 a:hover{color:#7965f7;}
 
@@ -124,6 +132,8 @@ body>header #user:hover ul{
     padding:1em;
     margin-bottom: 1em ;
     border-radius: 1em;
+    display: flex;
+    flex-direction: column;
 }
 #wrapper main article h3{
     margin:0;
@@ -240,6 +250,89 @@ form dl dd textarea{width:40em;height: 15em;}
 }
 .tag a:hover{
     border: none;
+    background-color: #7965f7;
+    color: white;
+}
+
+#follow{
+    font-size: 12px;
+}
+
+#tag_admin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#tag_admin a{
+    align-self: center;
+}
+
+#answer form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#answer .submit{
+    margin-left: 10px;
+}
+
+.header_post{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header_post time{
+    font-style: italic;
+    font-size: 13px;
+}
+
+.author{
+    border: solid 1px #7965f7;
+    color: #7965f7;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    padding: 2px 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.author:hover{
+    background-color: #f2f2f6;
+}
+
+.comment{
+    background-color: #f2f2f6;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+#author_comment{
+    font-weight: 400;
+}
+
+#like, #dislike{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#dislike{
+    background-color: #7965f7;
+    color: white;
+}
+
+#like:hover{
     background-color: #7965f7;
     color: white;
 }
