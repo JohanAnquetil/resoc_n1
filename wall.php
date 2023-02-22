@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <title>Mur</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
 
     <body>
@@ -48,7 +48,7 @@
                 <section>
                     <h3>Mur</h3>
                     <p>Retrouvez tous les messages de <?php echo $user['alias'] ?>.</p>
-                    <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                    <img src="minion.jpg" alt="Portrait de l'utilisatrice"/>
 
                     <?php
                     //Si l'id du user connecté ($user_idactuel) est différent
@@ -118,38 +118,39 @@
                 ?>
 
                     <article>
-                        <h3>
-                            <time datetime='2020-02-01 11:12:13' ><?php echo $post['created']?></time>
-                        </h3>
-                        <address>par <?php echo '<a href="wall.php?user_id=' . $authorId . '">' . $post['author_name'] . ' ' . '</a>'; ?></address>
+                        <header class="header_post">
+                            <?php if ($user_idactuel != $userId) { ?>
+                                <p class="author"> <?php echo '<a href="wall.php?user_id=' . $authorId . '">' . $post['author_name'] . '</a>'; ?> </p>
+                            <?php } ?>
+                            <h3> <time><?php echo $post['created'] ?></time> </h3>
+                        </header>
                         <div>
-                            <p><?php echo $post['content']?></p>
+                            <p><?php echo $post['content'] ?></p>
                         </div>
                         <footer>
                             <small>
                                 <?php include('like.php'); ?>
                             </small>
-                            <?php
-                                foreach ($tags as $key => $tag) {
-                                    echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
-                                    
-                                    /* A COMPLETER
-                                    //Si le message comporte un mot commençant par un #
-                                    //ajouter dans la table posts_tags (post_id & tag_id)
-                                    $hashtag = "/#/";
-                                    if (preg_match($hashtag, $postContent, $matches, PREG_OFFSET_CAPTURE)) {
-                                        //if (le mot est dans la table TAGS){
-                                        //    l'ajouter dans la table posts_tags
-                                        //    $sqlQuery = "INSERT INTO posts_tags VALUES (NULL, '$postId', '$tagIdReverse[$key]')";
-                                        //}
-                                        echo "Un mot a été trouvé";
-                                        echo "tag id : " . $tagIdReverse[$key];
-                                        echo "post id : " . $postId;
+                            <div>
+                                <?php
+                                    foreach ($tags as $key => $tag) {
+                                        if ($tag != null) {
+                                            echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                        }
                                     }
-                                     */
+                                ?>
+                            </div>
+                        </footer>
+                        <div>
+                            <?php
+                                //Si l'id du user connecté ($user_idactuel) est différent
+                                //de l'id du user dont c'est le post ($authorId)
+                                //pouvoir commenter le message
+                                if ($user_idactuel != $authorId) {
+                                    include('answer_post.php');
                                 }
                             ?>
-                        </footer>
+                        </div>
                     </article>
 
                 <?php } ?>

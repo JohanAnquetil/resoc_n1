@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Actualités</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
 
@@ -16,8 +16,7 @@
                 <!-- <img src="user.jpg" alt="Portrait de l'utilisatrice"/> -->
                 <section>
                     <h3>Actualités</h3>
-                    <p>Retrouvez les derniers messages de
-                        toutes les utilisatrices du site.</p>
+                    <p>Retrouvez les derniers messages des utilisatrices du site.</p>
                 </section>
             </aside>
 
@@ -49,9 +48,9 @@
                                             users.alias as author_name,
                                             users.id as author_id,
                                             posts.id as post_id,
-                    count(likes.id) as like_number,
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
-                    GROUP_CONCAT(DISTINCT tags.id) AS tag_id
+                                            count(likes.id) as like_number,
+                                            GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                                            GROUP_CONCAT(DISTINCT tags.id) AS tag_id
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id
@@ -60,7 +59,7 @@
                     WHERE posts.parent_id IS NULL
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
-                    LIMIT 5
+                    LIMIT 3
                     ";
                     $lesInformations = $mysqli->query($laQuestionEnSql);
                 // Vérification
@@ -81,6 +80,7 @@
                     $tagIdReverse = array_reverse($tagId);
                     $authorId = $post['author_id'];
                     $postId = $post['post_id'];
+                    $postContent = $post['content'];
     
                     //echo "<pre>" . print_r($post, 1) . "</pre>";
 
@@ -88,10 +88,10 @@
                     ?>
 
                     <article>
-                        <h3>
-                            <time><?php echo $post['created'] ?></time>
-                        </h3>
-                        <address><?php echo '<a href="wall.php?user_id=' . $authorId . '">' . $post['author_name'] . '</a>'; ?></address>
+                        <header class="header_post">
+                            <p class="author"> <?php echo '<a href="wall.php?user_id=' . $authorId . '">' . $post['author_name'] . '</a>'; ?> </p>
+                            <h3> <time><?php echo $post['created'] ?></time> </h3>
+                        </header>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>
@@ -99,20 +99,26 @@
                             <small>
                                 <?php include('like.php'); ?>
                             </small>
+                            <div>
+                                <?php
+                                    foreach ($tags as $key => $tag) {
+                                        if ($tag != null){
+                                            echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </footer>
+                        <div>
                             <?php
-                                foreach ($tags as $key => $tag) {
-                                    echo '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . '#' . $tag . ' ' . '</a>'; // Ajouter le lien pour chaque tag
+                                //Si l'id du user connecté ($user_idactuel) est différent
+                                //de l'id du user dont c'est le post ($authorId)
+                                //pouvoir commenter le message
+                                if ($user_idactuel != $authorId) {
+                                    include('answer_post.php');
                                 }
                             ?>
-                        </footer>
-                        <?php
-                            //Si l'id du user connecté ($user_idactuel) est différent
-                            //de l'id du user dont c'est le post ($authorId)
-                            //pouvoir commenter le message
-                            if ($user_idactuel != $authorId) {
-                                include('answer_post.php');
-                            }
-                        ?>
+                        </div>
                     </article>
 
                     <?php

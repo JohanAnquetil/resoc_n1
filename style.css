@@ -124,6 +124,8 @@ body>header #user:hover ul{
     padding:1em;
     margin-bottom: 1em ;
     border-radius: 1em;
+    display: flex;
+    flex-direction: column;
 }
 #wrapper main article h3{
     margin:0;
@@ -267,4 +269,57 @@ form dl dd textarea{width:40em;height: 15em;}
 
 #answer .submit{
     margin-left: 10px;
+}
+
+.header_post{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header_post time{
+    font-style: italic;
+    font-size: 13px;
+}
+
+.author{
+    border: solid 1px #7965f7;
+    color: #7965f7;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    padding: 2px 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.author:hover{
+    background-color: #f2f2f6;
+}
+
+.comment{
+    background-color: #f2f2f6;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+#author_comment{
+    font-weight: 400;
+}
+
+#like, #dislike{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#dislike{
+    background-color: #7965f7;
+    color: white;
 }

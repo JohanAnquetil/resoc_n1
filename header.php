@@ -8,7 +8,7 @@
 <header>
 
     <div id="logo">
-        <a href='admin.php'><img src="resoc.jpg" alt="Logo de notre réseau social"/></a>
+        <a href='admin.php'><img src="admin_violet.png" alt="Logo de notre réseau social"/></a>
     </div>
 
     <nav id="menu">

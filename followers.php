@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Mes abonnées</title>
         <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
 
