@@ -59,7 +59,7 @@
                     WHERE posts.parent_id IS NULL
                     GROUP BY posts.id
                     ORDER BY posts.created DESC
-                    LIMIT 3
+                    LIMIT 5
                     ";
                     $lesInformations = $mysqli->query($laQuestionEnSql);
                 // Vérification

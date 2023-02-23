@@ -1,7 +1,5 @@
 <header class="header_post">
-    <?php if ($user_idactuel != $userId) { ?>
-        <p class="author"> <?php echo '<a href="wall.php?user_id=' . $authorId . '">' . $post['author_name'] . '</a>'; ?> </p>
-    <?php } ?>
+    <p class="author"> <?php echo '<a href="wall.php?user_id=' . $authorId . '">' . $post['author_name'] . '</a>'; ?> </p>
     <h3> <time><?php echo $post['created'] ?></time> </h3>
 </header>
 
@@ -14,9 +12,11 @@
                 if (strpos($post['content'], $tag)) {
                     $tagLink = '<a href="tags.php?tag_id=' . $tagIdReverse[$key] . '">' . $tag . '</a>';
                     $newContent = str_replace($tag, $tagLink, $post['content']);
+                    echo $newContent;
+                } else {
+                    echo $post['content'];
                 }
             }
-            echo $newContent;
         ?>
     </p>
 </div>

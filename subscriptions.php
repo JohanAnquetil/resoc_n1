@@ -19,7 +19,7 @@
                         l'utilisatrice n° <?php echo intval($_GET['user_id']) ?>
                         suit les messages.
                     </p>
-                    <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                    <img src="minion.jpg" alt="Portrait de l'utilisatrice"/>
                 </section>
             </aside>
 
@@ -43,9 +43,13 @@
                 while ($followed = $lesInformations->fetch_assoc()) {
                 ?>
                 <article>
-                    <img src="user.jpg" alt="blason"/>
-                    <h3><?php echo $followed["alias"] ?></h3>
-                    <p><?php echo $followed["email"] ?></p>
+                    <div>
+                        <img src="admin_violet.png" alt="blason"/>
+                    </div>
+                    <div>
+                        <h3><?php echo $followed["alias"] ?></h3>
+                        <p><?php echo $followed["email"] ?></p>
+                    </div>
                 </article>
                 <?php  }?>
             </main>

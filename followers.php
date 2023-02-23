@@ -18,7 +18,7 @@
                     <p>Retrouvez la liste des personnes qui
                         suivent les messages de l'utilisatrice
                         n° <?php echo intval($_GET['user_id']) ?>.</p>
-                    <img src = "user.jpg" alt = "Portrait de l'utilisatrice"/>
+                    <img src = "minion.jpg" alt = "Portrait de l'utilisatrice"/>
                 </section>
             </aside>
 
@@ -43,10 +43,14 @@
                 while ($post = $lesInformations->fetch_assoc()) {
                     
                 ?>
-                <article>
-                    <img src="user.jpg" alt="blason"/>
-                    <h3><?php echo $post["alias"] ?></h3>
-                    <p><?php echo $post["email"] ?></p>
+                <article class="followers">
+                    <div>
+                        <img src="admin_violet.png" alt="blason"/>
+                    </div>
+                    <div>
+                        <h3><?php echo $post["alias"] ?></h3>
+                        <p><?php echo $post["email"] ?></p>
+                    </div>
                 </article>
               <?php  }?>
             </main>

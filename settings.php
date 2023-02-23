@@ -18,7 +18,7 @@
                     <h3>Paramètres</h3>
                     <p>Retrouvez les informations de l'utilisatrice
                         n° <?php echo intval($_GET['user_id']) ?>.</p>
-                    <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                    <img src="minion.jpg" alt="Portrait de l'utilisatrice"/>
                 </section>
             </aside>
 

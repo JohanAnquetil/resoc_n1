@@ -186,12 +186,14 @@ body>header #user:hover ul{
 .contacts {
     display:flex;
     flex-wrap: wrap;
-    align-items:flex-start;
-    align-content: flex-start ;
+    align-content: space-between ;
 }
 .contacts article{
-    width:25em;
-    height:7em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    width: 16em;
     margin-right: 1em;
 }
 .contacts article img{
@@ -215,6 +217,10 @@ form dl dd textarea{width:40em;height: 15em;}
     border-radius: 10px;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+#connexion{
+    margin: 10px;
 }
 
 .registration{
