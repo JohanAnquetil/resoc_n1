@@ -1,6 +1,6 @@
 # Réseau social en PHP
 
-Réalisé dans le cadre de notre formation à Ada Tech School en février 2023, ce quatrième projet a été réalisé en **PHP et **MySQL sur une durée de 5 jours.
+Réalisé dans le cadre de notre formation à Ada Tech School en février 2023, ce quatrième projet a été réalisé en **PHP** et **MySQL** sur une durée de 5 jours.
 
 Nous avons découvert le fonctionnement de PHP (includes, Get, Post, Isset, sessions, input et input cachés), PhpMyAdmin et les requêtes SQL (clés uniques, clés étrangères, les "join" et concaténations, créer et altérer une table, sélectionner, insérer, supprimer une entrée, protéger des injections SQL...). Nous avons coopérer en nous appuyant sur la méthode Kanban sur le service Trello et mélanger pair-programming et découpage des tâches.
 
